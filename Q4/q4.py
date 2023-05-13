@@ -21,7 +21,12 @@ for row in data:
         if row[12] == '':
             row[12] = '0'
         total = int(row[10]) + int(row[12])
-        get_on[row[3]] = total
+        try:
+            get_on[row[3]]+=total
+        except KeyError as k:
+            get_on[row[3]] = total
+        finally:
+            pass
 
 values = list(get_on.values())
 values.sort(reverse=True)
@@ -69,7 +74,12 @@ for row in data:
         if row[13] == '':
             row[13] = '0'
         total = int(row[11]) + int(row[13])
-        get_off[row[3]] = total
+        try:
+            get_off[row[3]]+=total
+        except KeyError as k:
+            get_off[row[3]] = total
+        finally:
+            pass
 
 values = list(get_off.values())
 values.sort(reverse=True)
@@ -121,7 +131,12 @@ for row in data:
         if row[13] == '':
             row[13] = '0'
         total = int(row[11]) + int(row[13]) + int(row[10]) + int(row[12])
-        get_onoff[row[3]] = total
+        try:
+            get_onoff[row[3]]+=total
+        except KeyError as k:
+            get_onoff[row[3]] = total
+        finally:
+            pass
 
 values = list(get_onoff.values())
 values.sort(reverse=True)
